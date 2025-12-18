@@ -2,34 +2,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OSCounts</title>
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <title>LiveCounts Clone (Frontend)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #0b0b0b 60%);
+      color: #fff;
+    }/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px 50px;
+}
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.hero p {
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+.hero .links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.hero a {
+  text-decoration: none;
+  color: #fff;
+  background: #151515;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+  border: 1px solid #222;
+}
+.hero a:hover {
+  background: #1f1f1f;
+  transform: translateY(-2px);
+}
+
+/* SEARCH */
+.search-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 30px 20px 10px;
+}
+.search {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  gap: 10px;
+}
+.search input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: #141414;
+  color: #fff;
+  font-size: 15px;
+}
+.search button {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  background: #ff0033;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* SECTION TITLE */
+.section-title {
+  text-align: center;
+  margin: 50px 0 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.section-sub {
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(180deg, #161616, #101010);
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, #1d1d1d, #141414);
+}
+
+.icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+.card h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* FOOTER RESULT */
+#result {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+  </style>
 </head>
-<body>
-  <!-- Top Bar -->
-  <header class="topbar">
-    <div class="logo">OSCounts</div>
-    <input id="searchInput" type="text" placeholder="Search YouTube channel..." />
-    <button onclick="searchChannel()">Search</button>
-  </header>  <!-- Menu -->  <nav class="menu">
-    <button onclick="showTab('track')">Track</button>
-    <button onclick="showTab('analytics')">Analytics</button>
-    <button onclick="showTab('stats')">Stats</button>
-  </nav>  <!-- Content -->  <main>
-    <section id="track" class="tab active">
-      <h2>Channel Tracker</h2>
-      <div id="result">Search for a channel to begin.</div>
-    </section><section id="analytics" class="tab">
-  <h2>Analytics</h2>
-  <p>Growth charts and trends (placeholder).</p>
-</section>
-
-<section id="stats" class="tab">
-  <h2>Stats</h2>
-  <p>Daily / monthly statistics (placeholder).</p>
-</section>
-
-  </main>
-</body>
+<body>  <!-- HERO -->  <section class="hero">
+    <h1>LIVE COUNTS</h1>
+    <p>A fast, clean, GitHub‑powered live counter website ⚡</p>
+    <div class="links">
+      <a href="#">Join our Discord</a>
+      <a href="#">Follow us on X</a>
+      <a href="#">Music</a>
+    </div>
+  </section>  <!-- SEARCH -->  <div class="search-wrap">
+    <div class="search">
+      <input id="searchInput" placeholder="Search a channel or username…" />
+      <button onclick="searchChannel()">Search</button>
+    </div>
+  </div>  <div id="result"></div>  <!-- COUNTERS -->  <h2 class="section-title">COUNTERS</h2>
+  <p class="section-sub">Only 1 account to check?</p>  <section class="grid">
+    <div class="card"><div class="icon">▶️</div><h3>YouTube Live Subscriber Count</h3></div>
+    <div class="card"><div class="icon">📺</div><h3>YouTube Live View Count</h3></div>
+    <div class="card"><div class="icon">🐦</div><h3>Twitter Live Follower Count</h3></div>
+    <div class="card"><div class="icon">🎵</div><h3>TikTok Live Follower Count</h3></div>
+    <div class="card"><div class="icon">🎮</div><h3>Twitch Live Follower Count</h3></div>
+    <div class="card"><div class="icon">▶️</div><h3>Rumble Live Follower Count</h3></div>
+    <div class="card"><div class="icon">▶️</div><h3>Rumble Live View Count</h3></div>
+    <div class="card"><div class="icon">📸</div><h3>Instagram Live Follower Count</h3></div>
+    <div class="card"><div class="icon">🟩</div><h3>DeviantArt Live Follower Count</h3></div>
+    <div class="card"><div class="icon">💬</div><h3>Discord Live Member Count</h3></div>
+    <div class="card"><div class="icon">🟥</div><h3>Roblox Live Visit Count</h3></div>
+    <div class="card"><div class="icon">🟠</div><h3>Reddit Live Member Count</h3></div>
+  </section>  <script>
+    function searchChannel() {
+      const v = document.getElementById('searchInput').value.trim();
+      if (!v) return;
+      document.getElementById('result').innerText = `Showing estimated results for: ${v}`;
+    }
+  </script></body>
 </html>
